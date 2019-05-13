@@ -3,6 +3,7 @@ package com.codecool.snake;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.HealthPowerUp;
 import com.codecool.snake.entities.powerups.LengthPowerUp;
+import com.codecool.snake.entities.powerups.SpeedPowerUp;
 import com.codecool.snake.entities.snakes.Snake;
 import com.codecool.snake.eventhandler.InputHandler;
 
@@ -52,6 +53,7 @@ public class Game extends Pane {
         for(int i = 0; i < numberOfPowerUps; ++i) {
             new LengthPowerUp();
             new HealthPowerUp();
+            new SpeedPowerUp();
         }
     }
 

@@ -8,6 +8,7 @@ import com.codecool.snake.entities.enemies.Enemy;
 import com.codecool.snake.entities.powerups.HealthPowerUp;
 import com.codecool.snake.entities.powerups.LengthPowerUp;
 
+import com.codecool.snake.entities.powerups.SpeedPowerUp;
 import com.sun.javafx.geom.Vec2d;
 import javafx.geometry.Point2D;
 
@@ -43,7 +44,7 @@ public class SnakeHead extends GameEntity implements Interactable {
     public void apply(GameEntity entity) {
         if(entity instanceof Enemy){
             System.out.println(getMessage());
-            snake.changeHealth(((Enemy) entity).getDamage());
+            snake.changeHealth(-((Enemy) entity).getDamage());
         }
         if(entity instanceof LengthPowerUp){
             System.out.println(getMessage());
@@ -52,6 +53,10 @@ public class SnakeHead extends GameEntity implements Interactable {
         if(entity instanceof HealthPowerUp){
             System.out.println(getMessage());
             snake.changeHealth(5);
+        }
+        if(entity instanceof SpeedPowerUp){
+            System.out.println(getMessage());
+            //TODO
         }
     }
 
