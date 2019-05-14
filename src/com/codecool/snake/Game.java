@@ -30,10 +30,12 @@ public class Game extends Pane {
     private void initButtons(){
         /*Initializing*/
         Button restartButton = new Button("RESTART");
+        restartButton.setLayoutX(10);
+        restartButton.setLayoutY(10);
         DropShadow shadow = new DropShadow();
         restartButton.setEffect(shadow);
         getChildren().add(restartButton);
-        getStylesheets().add("com/codecool/klondike/MainStyle.css");
+        getStylesheets().add("com/codecool/snake/MainStyle.css");
         /*Event handling*/
         restartButton.setOnAction((ActionEvent ae)-> restart());
     }
