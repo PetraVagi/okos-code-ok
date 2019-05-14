@@ -1,12 +1,17 @@
 package com.codecool.snake;
 
 import com.codecool.snake.entities.enemies.SimpleEnemy;
-import com.codecool.snake.entities.powerups.SimplePowerUp;
+import com.codecool.snake.entities.powerups.HealthPowerUp;
+import com.codecool.snake.entities.powerups.LengthPowerUp;
+import com.codecool.snake.entities.powerups.SpeedPowerUp;
 import com.codecool.snake.entities.snakes.Snake;
 import com.codecool.snake.eventhandler.InputHandler;
 
 import com.sun.javafx.geom.Vec2d;
+import javafx.event.ActionEvent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.Pane;
 
 
@@ -22,8 +27,28 @@ public class Game extends Pane {
 
         init();
     }
+    private void initButtons(){
+        /*Initializing*/
+        Button restartButton = new Button("RESTART");
+        restartButton.setLayoutX(10);
+        restartButton.setLayoutY(10);
+        DropShadow shadow = new DropShadow();
+        restartButton.setEffect(shadow);
+        getChildren().add(restartButton);
+        getStylesheets().add("com/codecool/snake/MainStyle.css");
+        /*Event handling*/
+        restartButton.setOnAction((ActionEvent ae)-> restart());
+    }
+
+    private void restart(){
+        Globals.getInstance().display.clear();
+        Globals.getInstance().stopGame();
+        init();
+        start();
+    }
 
     public void init() {
+        initButtons();
         spawnSnake();
         spawnEnemies(4);
         spawnPowerUps(4);
@@ -48,7 +73,11 @@ public class Game extends Pane {
     }
 
     private void spawnPowerUps(int numberOfPowerUps) {
-        for(int i = 0; i < numberOfPowerUps; ++i) new SimplePowerUp();
+        for(int i = 0; i < numberOfPowerUps; ++i) {
+            new LengthPowerUp();
+            new HealthPowerUp();
+            new SpeedPowerUp();
+        }
     }
 
     private void setupInputHandling() {
