@@ -49,7 +49,7 @@ public class Game extends Pane {
         initButtons();
         spawnSnake();
         spawnEnemies(4);
-        spawnPowerUps(4);
+        spawnPowerUps(4, 3, 2);
 
         GameLoop gameLoop = new GameLoop(snake);
         Globals.getInstance().setGameLoop(gameLoop);
@@ -70,10 +70,14 @@ public class Game extends Pane {
         for(int i = 0; i < numberOfEnemies; ++i) new SimpleEnemy();
     }
 
-    private void spawnPowerUps(int numberOfPowerUps) {
-        for(int i = 0; i < numberOfPowerUps; ++i) {
+    private void spawnPowerUps(int numberOfLengthPowerUps, int numberOfHealthPowerUps, int numberOfSpeedPowerUps) {
+        for(int i = 0; i < numberOfLengthPowerUps; ++i) {
             new LengthPowerUp();
+        }
+        for(int i = 0; i < numberOfHealthPowerUps; ++i) {
             new HealthPowerUp();
+        }
+        for(int i = 0; i < numberOfSpeedPowerUps; ++i) {
             new SpeedPowerUp();
         }
     }
