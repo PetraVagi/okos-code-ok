@@ -40,6 +40,7 @@ public class Game extends Pane {
     private void restart(){
         Globals.getInstance().display.clear();
         Globals.getInstance().stopGame();
+        Snake.counter = 1;
         init();
         start();
     }

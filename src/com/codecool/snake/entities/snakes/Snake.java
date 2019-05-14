@@ -10,9 +10,11 @@ import com.sun.javafx.geom.Vec2d;
 import com.sun.xml.internal.bind.v2.TODO;
 import javafx.scene.input.KeyCode;
 
+import java.util.Objects;
+
 
 public class Snake implements Animatable {
-    private static int counter = 1;
+    public static int counter = 1;
     private String name;
     private static final float speed = 2;
     private int health = 100;
@@ -42,11 +44,11 @@ public class Snake implements Animatable {
 
     private SnakeControl getUserInput() {
         SnakeControl turnDir = SnakeControl.INVALID;
-        if(this.name == "snake_1"){
+        if(Objects.equals(this.name, "snake_1")){
             if(InputHandler.getInstance().isKeyPressed(KeyCode.LEFT)) turnDir = SnakeControl.TURN_LEFT;
             if(InputHandler.getInstance().isKeyPressed(KeyCode.RIGHT)) turnDir = SnakeControl.TURN_RIGHT;
         }
-        if(this.name == "snake_2"){
+        if(Objects.equals(this.name, "snake_2")){
             if(InputHandler.getInstance().isKeyPressed(KeyCode.A)) turnDir = SnakeControl.TURN_LEFT;
             if(InputHandler.getInstance().isKeyPressed(KeyCode.D)) turnDir = SnakeControl.TURN_RIGHT;
         }
