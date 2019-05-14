@@ -7,10 +7,13 @@ import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.eventhandler.InputHandler;
 
 import com.sun.javafx.geom.Vec2d;
+import com.sun.xml.internal.bind.v2.TODO;
 import javafx.scene.input.KeyCode;
 
 
 public class Snake implements Animatable {
+    private static int counter = 1;
+    private String name;
     private static final float speed = 2;
     private int health = 100;
 
@@ -21,9 +24,11 @@ public class Snake implements Animatable {
     public Snake(Vec2d position) {
         head = new SnakeHead(this, position);
         body = new DelayedModificationList<>();
+        this.name = createNameForSnake();
 
         addPart(4);
     }
+
 
     public void step() {
         SnakeControl turnDir = getUserInput();
@@ -37,8 +42,14 @@ public class Snake implements Animatable {
 
     private SnakeControl getUserInput() {
         SnakeControl turnDir = SnakeControl.INVALID;
-        if(InputHandler.getInstance().isKeyPressed(KeyCode.LEFT)) turnDir = SnakeControl.TURN_LEFT;
-        if(InputHandler.getInstance().isKeyPressed(KeyCode.RIGHT)) turnDir = SnakeControl.TURN_RIGHT;
+        if(this.name == "snake_1"){
+            if(InputHandler.getInstance().isKeyPressed(KeyCode.LEFT)) turnDir = SnakeControl.TURN_LEFT;
+            if(InputHandler.getInstance().isKeyPressed(KeyCode.RIGHT)) turnDir = SnakeControl.TURN_RIGHT;
+        }
+        if(this.name == "snake_2"){
+            if(InputHandler.getInstance().isKeyPressed(KeyCode.A)) turnDir = SnakeControl.TURN_LEFT;
+            if(InputHandler.getInstance().isKeyPressed(KeyCode.D)) turnDir = SnakeControl.TURN_RIGHT;
+        }
         return turnDir;
     }
 
@@ -77,5 +88,11 @@ public class Snake implements Animatable {
 
         if(result != null) return result;
         return head;
+    }
+
+    private String createNameForSnake(){
+        String name = "snake_" + counter;
+        counter++;
+        return name;
     }
 }
