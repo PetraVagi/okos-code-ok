@@ -23,6 +23,15 @@ public class GameLoop {
 
     public void step() {
         if(running) {
+            if (Utils.getChance() < 0.5)
+                Game.spawnLengthPowerUps(1);
+
+            if (Utils.getChance() < 0.2)
+                Game.spawnHealthPowerUps(1);
+
+            if (Utils.getChance() < 0.06)
+                Game.spawnSpeedPowerUps(1);
+
             snake.step();
             for (GameEntity gameObject : Globals.getInstance().display.getObjectList()) {
                 if (gameObject instanceof Animatable) {
