@@ -74,19 +74,19 @@ public class Game extends Pane {
         for(int i = 0; i < numberOfEnemies; ++i) new SimpleEnemy();
     }
 
-    static void spawnLengthPowerUps(int numberOfLengthPowerUps) {
+    void spawnLengthPowerUps(int numberOfLengthPowerUps) {
         for (int i = 0; i < numberOfLengthPowerUps; ++i) {
             new LengthPowerUp();
         }
     }
 
-    static void spawnHealthPowerUps(int numberOfHealthPowerUps){
+    void spawnHealthPowerUps(int numberOfHealthPowerUps){
         for (int i = 0; i < numberOfHealthPowerUps; ++i) {
             new HealthPowerUp();
         }
     }
 
-    static void spawnSpeedPowerUps(int numberOfSpeedPowerUps){
+    void spawnSpeedPowerUps(int numberOfSpeedPowerUps){
         for(int i = 0; i < numberOfSpeedPowerUps; ++i) {
             new SpeedPowerUp();
         }
