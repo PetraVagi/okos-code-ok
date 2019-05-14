@@ -8,7 +8,10 @@ import com.codecool.snake.entities.snakes.Snake;
 import com.codecool.snake.eventhandler.InputHandler;
 
 import com.sun.javafx.geom.Vec2d;
+import javafx.event.ActionEvent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.Pane;
 
 
@@ -24,8 +27,26 @@ public class Game extends Pane {
 
         init();
     }
+    private void initButtons(){
+        /*Initializing*/
+        Button restartButton = new Button("RESTART");
+        DropShadow shadow = new DropShadow();
+        restartButton.setEffect(shadow);
+        getChildren().add(restartButton);
+        getStylesheets().add("com/codecool/klondike/MainStyle.css");
+        /*Event handling*/
+        restartButton.setOnAction((ActionEvent ae)-> restart());
+    }
+
+    private void restart(){
+        Globals.getInstance().display.clear();
+        Globals.getInstance().stopGame();
+        init();
+        start();
+    }
 
     public void init() {
+        initButtons();
         spawnSnake();
         spawnEnemies(4);
         spawnPowerUps(4);
