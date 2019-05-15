@@ -1,7 +1,7 @@
 package com.codecool.snake.entities.powerups;
 
-public class LengthPowerUp extends SimplePowerUp {
-    public LengthPowerUp() {
+public class LengthPowerUpBasic extends PowerUpBasic {
+    public LengthPowerUpBasic() {
         super("PowerUpBerry");
     }
 

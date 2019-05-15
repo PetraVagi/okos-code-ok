@@ -1,7 +1,7 @@
 package com.codecool.snake.entities.powerups;
 
-public class SpeedPowerUp extends SimplePowerUp {
-    public SpeedPowerUp() {
+public class SpeedPowerUpBasic extends PowerUpBasic {
+    public SpeedPowerUpBasic() {
         super("PowerUpFlash");
     }
 

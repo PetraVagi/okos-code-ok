@@ -7,10 +7,10 @@ import com.codecool.snake.entities.snakes.SnakeHead;
 import java.util.Random;
 
 
-public abstract class SimplePowerUp extends GameEntity implements Interactable {
+public abstract class PowerUpBasic extends GameEntity implements Interactable {
     private static Random rnd = new Random();
 
-    SimplePowerUp(String imageName) {
+    PowerUpBasic(String imageName) {
         setImage(Globals.getInstance().getImage(imageName));
 
         setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);

@@ -1,9 +1,10 @@
 package com.codecool.snake;
 
+import com.codecool.snake.entities.enemies.RunningEnemy;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
-import com.codecool.snake.entities.powerups.HealthPowerUp;
-import com.codecool.snake.entities.powerups.LengthPowerUp;
-import com.codecool.snake.entities.powerups.SpeedPowerUp;
+import com.codecool.snake.entities.powerups.HealthPowerUpBasic;
+import com.codecool.snake.entities.powerups.LengthPowerUpBasic;
+import com.codecool.snake.entities.powerups.SpeedPowerUpBasic;
 import com.codecool.snake.entities.snakes.Snake;
 import com.codecool.snake.eventhandler.InputHandler;
 
@@ -74,22 +75,20 @@ public class Game extends Pane {
         for(int i = 0; i < numberOfEnemies; ++i) new SimpleEnemy();
     }
 
+    void spawnRunningEnemies(int numberOfEnemies) {
+        for(int i = 0; i < numberOfEnemies; ++i) new RunningEnemy();
+    }
+
     void spawnLengthPowerUps(int numberOfLengthPowerUps) {
-        for (int i = 0; i < numberOfLengthPowerUps; ++i) {
-            new LengthPowerUp();
-        }
+        for (int i = 0; i < numberOfLengthPowerUps; ++i) new LengthPowerUpBasic();
     }
 
     void spawnHealthPowerUps(int numberOfHealthPowerUps){
-        for (int i = 0; i < numberOfHealthPowerUps; ++i) {
-            new HealthPowerUp();
-        }
+        for (int i = 0; i < numberOfHealthPowerUps; ++i) new HealthPowerUpBasic();
     }
 
     void spawnSpeedPowerUps(int numberOfSpeedPowerUps){
-        for(int i = 0; i < numberOfSpeedPowerUps; ++i) {
-            new SpeedPowerUp();
-        }
+        for(int i = 0; i < numberOfSpeedPowerUps; ++i) new SpeedPowerUpBasic();
     }
 
     private void setupInputHandling() {
