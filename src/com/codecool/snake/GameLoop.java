@@ -29,6 +29,24 @@ public class GameLoop {
 
     public void step() {
         if(running) {
+            if (Utils.getChance() < 0.6)
+                Globals.getInstance().game.spawnLengthPowerUps(1);
+
+            if (Utils.getChance() < 0.2)
+                Globals.getInstance().game.spawnHealthPowerUps(1);
+
+            if (Utils.getChance() < 0.06)
+                Globals.getInstance().game.spawnSpeedPowerUps(1);
+
+            if (Utils.getChance() < 0.45)
+                Globals.getInstance().game.spawnSimpleEnemies(1);
+
+            if (Utils.getChance() < 0.5)
+                Globals.getInstance().game.spawnRunningEnemies(2);
+
+            if (Utils.getChance() < 0.3)
+                Globals.getInstance().game.spawnFlyingEnemies(1);
+
             snake.step();
             snake_2.step();
             for (GameEntity gameObject : Globals.getInstance().display.getObjectList()) {

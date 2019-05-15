@@ -1,7 +1,7 @@
 package com.codecool.snake.entities.powerups;
 
-public class HealthPowerUp extends SimplePowerUp {
-    public HealthPowerUp() {
+public class HealthPowerUpBasic extends PowerUpBasic {
+    public HealthPowerUpBasic() {
         super("PowerUpHeart");
     }
 

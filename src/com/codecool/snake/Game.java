@@ -1,9 +1,11 @@
 package com.codecool.snake;
 
+import com.codecool.snake.entities.enemies.FlyingEnemy;
+import com.codecool.snake.entities.enemies.RunningEnemy;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
-import com.codecool.snake.entities.powerups.HealthPowerUp;
-import com.codecool.snake.entities.powerups.LengthPowerUp;
-import com.codecool.snake.entities.powerups.SpeedPowerUp;
+import com.codecool.snake.entities.powerups.HealthPowerUpBasic;
+import com.codecool.snake.entities.powerups.LengthPowerUpBasic;
+import com.codecool.snake.entities.powerups.SpeedPowerUpBasic;
 import com.codecool.snake.entities.snakes.Snake;
 import com.codecool.snake.eventhandler.InputHandler;
 
@@ -31,10 +33,12 @@ public class Game extends Pane {
     private void initRestartButton(){
         /*Initializing*/
         Button restartButton = new Button("RESTART");
+        restartButton.setLayoutX(10);
+        restartButton.setLayoutY(10);
         DropShadow shadow = new DropShadow();
         restartButton.setEffect(shadow);
         getChildren().add(restartButton);
-        getStylesheets().add("com/codecool/klondike/MainStyle.css");
+        getStylesheets().add("com/codecool/snake/MainStyle.css");
         /*Event handling*/
         restartButton.setOnAction((ActionEvent ae)-> restart());
     }
@@ -52,6 +56,12 @@ public class Game extends Pane {
         spawnSnakes();
         spawnEnemies(4);
         spawnPowerUps(4);
+        initButtons();
+        spawnSnake();
+        spawnSimpleEnemies(4);
+        spawnLengthPowerUps(4);
+        spawnHealthPowerUps(3);
+        spawnSpeedPowerUps(2);
 
         GameLoop gameLoop = new GameLoop(snake, snake_2);
         Globals.getInstance().setGameLoop(gameLoop);
@@ -70,16 +80,28 @@ public class Game extends Pane {
     }
 
 
-    private void spawnEnemies(int numberOfEnemies) {
+    void spawnSimpleEnemies(int numberOfEnemies) {
         for(int i = 0; i < numberOfEnemies; ++i) new SimpleEnemy();
     }
 
-    private void spawnPowerUps(int numberOfPowerUps) {
-        for(int i = 0; i < numberOfPowerUps; ++i) {
-            new LengthPowerUp();
-            new HealthPowerUp();
-            new SpeedPowerUp();
-        }
+    void spawnRunningEnemies(int numberOfEnemies) {
+        for(int i = 0; i < numberOfEnemies; ++i) new RunningEnemy();
+    }
+
+    void spawnFlyingEnemies(int numberOfEnemies) {
+        for(int i = 0; i < numberOfEnemies; ++i) new FlyingEnemy();
+    }
+
+    void spawnLengthPowerUps(int numberOfLengthPowerUps) {
+        for (int i = 0; i < numberOfLengthPowerUps; ++i) new LengthPowerUpBasic();
+    }
+
+    void spawnHealthPowerUps(int numberOfHealthPowerUps){
+        for (int i = 0; i < numberOfHealthPowerUps; ++i) new HealthPowerUpBasic();
+    }
+
+    void spawnSpeedPowerUps(int numberOfSpeedPowerUps){
+        for(int i = 0; i < numberOfSpeedPowerUps; ++i) new SpeedPowerUpBasic();
     }
 
     private void setupInputHandling() {
