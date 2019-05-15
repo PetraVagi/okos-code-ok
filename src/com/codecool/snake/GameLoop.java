@@ -29,13 +29,13 @@ public class GameLoop {
 
     public void step() {
         if(running) {
-            if (Utils.getChance() < 0.6)
+            if (Utils.getChance() < 0.8)
                 Globals.getInstance().game.spawnLengthPowerUps(1);
 
-            if (Utils.getChance() < 0.2)
+            if (Utils.getChance() < 0.3)
                 Globals.getInstance().game.spawnHealthPowerUps(1);
 
-            if (Utils.getChance() < 0.06)
+            if (Utils.getChance() < 0.1)
                 Globals.getInstance().game.spawnSpeedPowerUps(1);
 
             if (Utils.getChance() < 0.45)

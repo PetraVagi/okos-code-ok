@@ -19,8 +19,8 @@ public class Snake implements Animatable {
     private float currentSpeed = startSpeed;
     private int health = 100;
 
-    public static boolean isTheFirstSnakeLive = true;
-    public static boolean isTheSecondSnakeLive = true;
+    private static boolean isTheFirstSnakeLive = true;
+    private static boolean isTheSecondSnakeLive = true;
 
     private SnakeHead head;
     private DelayedModificationList<GameEntity> body;
@@ -80,19 +80,25 @@ public class Snake implements Animatable {
         currentSpeed += diff;
     }
 
+    private void destroySnake(){
+        body.getList().forEach(GameEntity::destroy);
+        head.destroy();
+    }
+
     private void checkForGameOverConditions() {
-        if (Objects.equals(this.name, "snake_1")) {
+        /*Snake death*/
 
-            if (head.isOutOfBounds() || health <= 0) {
+        if (Objects.equals(this.name, "snake_1") && (head.isOutOfBounds() || health <= 0)) {
                 isTheFirstSnakeLive = false;
+                destroySnake();
             }
-        }
-        if (Objects.equals(this.name, "snake_2")) {
-
-            if (head.isOutOfBounds() || health <= 0) {
+        if (Objects.equals(this.name, "snake_2") && (head.isOutOfBounds() || health <= 0)) {
                 isTheSecondSnakeLive = false;
-            }
+                destroySnake();
         }
+
+        /*Game Over*/
+
         if (!isTheFirstSnakeLive && !isTheSecondSnakeLive){
             System.out.println("Game Over");
             Globals.getInstance().stopGame();

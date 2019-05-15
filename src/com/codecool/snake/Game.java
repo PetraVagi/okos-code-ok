@@ -54,10 +54,6 @@ public class Game extends Pane {
     public void init() {
         initRestartButton();
         spawnSnakes();
-        spawnEnemies(4);
-        spawnPowerUps(4);
-        initButtons();
-        spawnSnake();
         spawnSimpleEnemies(4);
         spawnLengthPowerUps(4);
         spawnHealthPowerUps(3);
