@@ -7,7 +7,6 @@ import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.eventhandler.InputHandler;
 
 import com.sun.javafx.geom.Vec2d;
-import com.sun.xml.internal.bind.v2.TODO;
 import javafx.scene.input.KeyCode;
 
 import java.util.Objects;
@@ -19,6 +18,9 @@ public class Snake implements Animatable {
     private static final float startSpeed = 2;
     private float currentSpeed = startSpeed;
     private int health = 100;
+
+    public static boolean isTheFirstSnakeLive = true;
+    public static boolean isTheSecondSnakeLive = true;
 
     private SnakeHead head;
     private DelayedModificationList<GameEntity> body;
@@ -79,9 +81,23 @@ public class Snake implements Animatable {
     }
 
     private void checkForGameOverConditions() {
-        if (head.isOutOfBounds() || health <= 0) {
+        if (Objects.equals(this.name, "snake_1")) {
+
+            if (head.isOutOfBounds() || health <= 0) {
+                isTheFirstSnakeLive = false;
+            }
+        }
+        if (Objects.equals(this.name, "snake_2")) {
+
+            if (head.isOutOfBounds() || health <= 0) {
+                isTheSecondSnakeLive = false;
+            }
+        }
+        if (!isTheFirstSnakeLive && !isTheSecondSnakeLive){
             System.out.println("Game Over");
             Globals.getInstance().stopGame();
+            isTheFirstSnakeLive = true;
+            isTheSecondSnakeLive = true;
         }
     }
 
