@@ -50,7 +50,7 @@ public class Game extends Pane {
     public void init() {
         initButtons();
         spawnSnake();
-        spawnEnemies(4);
+        spawnSimpleEnemies(4);
         spawnLengthPowerUps(4);
         spawnHealthPowerUps(3);
         spawnSpeedPowerUps(2);
@@ -70,7 +70,7 @@ public class Game extends Pane {
         snake = new Snake(new Vec2d(500, 500));
     }
 
-    private void spawnEnemies(int numberOfEnemies) {
+    void spawnSimpleEnemies(int numberOfEnemies) {
         for(int i = 0; i < numberOfEnemies; ++i) new SimpleEnemy();
     }
 

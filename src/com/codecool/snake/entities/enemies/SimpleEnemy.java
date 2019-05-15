@@ -27,7 +27,7 @@ public class SimpleEnemy extends Enemy implements Animatable, Interactable {
         double direction = rnd.nextDouble() * 360;
         setRotate(direction);
 
-        int speed = 1;
+        int speed = 2;
         heading = Utils.directionToVector(direction, speed);
     }
 
