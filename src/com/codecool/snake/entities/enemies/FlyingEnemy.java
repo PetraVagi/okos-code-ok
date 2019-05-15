@@ -16,11 +16,11 @@ public class FlyingEnemy extends EnemyBasic implements Animatable, Interactable 
     private Point2D heading;
     private static Random rnd = new Random();
     private double direction = 0;
-    private int speed = 3;
+    private int speed = Utils.generateRandomBetween(1, 6);
 
 
     public FlyingEnemy() {
-        super(20, "FlyingEnemy", 0, 3);
+        super(20, "FlyingEnemy", 0, 1);
     }
 
     private void changeDirection() {direction += 1;}

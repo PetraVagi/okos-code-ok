@@ -2,6 +2,8 @@ package com.codecool.snake;
 
 import javafx.geometry.Point2D;
 
+import java.util.Random;
+
 public class Utils {
 
     /*
@@ -14,7 +16,13 @@ public class Utils {
         return heading;
     }
 
-    static double getChance() {
+    public static double getChance() {
         return Math.random() * 100;
+    }
+
+    public static int generateRandomBetween(int lowNum, int highNum) {
+        Random rand = new Random();
+        int result = rand.nextInt(highNum-lowNum) + lowNum;
+        return result;
     }
 }

@@ -38,7 +38,7 @@ public class GameLoop {
             if (Utils.getChance() < 0.5)
                 Globals.getInstance().game.spawnRunningEnemies(2);
 
-            if (Utils.getChance() < 0.2)
+            if (Utils.getChance() < 0.3)
                 Globals.getInstance().game.spawnFlyingEnemies(1);
 
             snake.step();
