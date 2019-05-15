@@ -1,5 +1,6 @@
 package com.codecool.snake;
 
+import com.codecool.snake.entities.enemies.FlyingEnemy;
 import com.codecool.snake.entities.enemies.RunningEnemy;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.HealthPowerUpBasic;
@@ -77,6 +78,10 @@ public class Game extends Pane {
 
     void spawnRunningEnemies(int numberOfEnemies) {
         for(int i = 0; i < numberOfEnemies; ++i) new RunningEnemy();
+    }
+
+    void spawnFlyingEnemies(int numberOfEnemies) {
+        for(int i = 0; i < numberOfEnemies; ++i) new FlyingEnemy();
     }
 
     void spawnLengthPowerUps(int numberOfLengthPowerUps) {
